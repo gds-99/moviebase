@@ -18,4 +18,9 @@ public class MovieService {
 		
 	}
 
+	public void removeByName(String string) {
+		// TODO Auto-generated method stub
+		  count--;
+	}
+
 }
