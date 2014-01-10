@@ -1,7 +1,7 @@
 package com.vmware.moviebase;
 
 public class MovieService {
-
+	private int count = 0;
 	
 		
 	public MovieService(String name) {
@@ -10,11 +10,11 @@ public class MovieService {
 
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 2;
+		return  count;
 	}
 
-	public static void addMovie(Movie movie) {
-		// TODO Auto-generated method stub
+	public void addMovie(Movie movie) {
+				count++;
 		
 	}
 

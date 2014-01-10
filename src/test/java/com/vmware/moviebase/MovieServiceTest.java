@@ -19,7 +19,12 @@ public class MovieServiceTest {
 	}
 	
 	@Test
-	public void addOneMovieAndGetTheTotal() {}
+	public void addOneMovieAndGetTheTotal() {
+	MovieService movieService = new MovieService("VMWare Movie Night");
+	
+	movieService.addMovie(new Movie(" Wall-E"));
+	assertEquals(movieService.getCount(), 1); 
+	}
 	
 	@Test
 	public void getTheTotalWithNoMoview() {}
