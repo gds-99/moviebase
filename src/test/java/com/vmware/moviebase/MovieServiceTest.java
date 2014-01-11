@@ -42,19 +42,54 @@ public class MovieServiceTest {
 	}
 
 	@Test
-	public void removeAMovieAndgetTheTotal(){
+	public void removeAMovieAndgetTheTotal() throws MovieException{
 		movieService.addMovie(new Movie("E.T. - The Extra Terrestrial"));
 		movieService.addMovie(new Movie(" Wall-E"));
 		movieService.removeByName("Wall-E");
 		assertEquals(movieService.getCount(), 1); 
 	}
 	@Test
-	public void removeAMovieFromAnEmptyService() {}
-	
-	@Test
-	public void removeAMovieThatDoesntExist(){}  
-		
+	public void removeAMovieFromAnEmptyService() { 
+		try {
+			movieService.removeByName("Wall-E");
+			fail("Was expecting an Exception in remove movie");
+	} catch (MovieException e)  {
+		assertEquals(e.getMessage(), "There are no movies in the service");	
+		}
 		
 	}
 	
+	@Test
+	public void removeAMovieThatDoesntExist(){
+		
+		movieService.addMovie(new Movie("E.T. - The Extra Terrestrial"));
+		movieService.addMovie(new Movie(" Wall-E"));
+		try{
+		movieService.removeByName("Titiantic");
+		fail("Was expecting exception in removeAMovieThatDoesntExist");
+		} catch (MovieException e) {
+			assertEquals(e.getMessage(), "That movie does not exist in the service");
+			
+		}
+		
+	}	
+		
+
+
+	
+	
+	@Test
+	public void removeAMovieFooThatDoesntExist(){
+		movieService.addMovie(new Movie("E.T. - The Extra Terrestrial"));
+		movieService.addMovie(new Movie(" Wall-E"));
+		try{
+		movieService.removeByName("Foo");
+		fail("Was expecting exception in removeAMovieThatDoesntExist");
+		} catch (MovieException e) {
+			assertEquals(e.getMessage(), "That movie does not exist in the service");
+		}
+		
+	}
+	
+}
 
